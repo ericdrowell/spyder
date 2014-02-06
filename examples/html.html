@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<script src="../src/fastly.js"></script>
+
+<html>
+
+<script>Fastly.start('feed');</script>
+
+<p>Start</p>
+
+<script>
+  var i = 0, n;
+  while(i<99999) {
+  	n = Math.pow(i, 2);
+  	i ++;
+  }
+</script>
+
+<p>End</p>
+
+<script>Fastly.stop('feed');</script>
+
+</html>
+
+<script>console.log(Fastly.data);</script>

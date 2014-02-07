@@ -16,5 +16,36 @@ Once you're setup, you can use the Spyder chart plugin to visualize the performa
 
 ### Examples
 
+#### Accessing Spyder data
+
+    var data = Spyder.data;
+  
+and the data structure looks like this:
+
+    {
+      'dom-ready': {
+        start: 300,
+        type: 'tag'
+      },
+      'page-load': {
+        start: 600,
+        type: 'tag'
+      },
+      'page-visible-above-fold': {
+        start: 210,
+        type: 'tag'
+      },
+      'jquery.min.js': {
+        start: 5,
+        end: 180,
+        type: 'js'
+      },
+      'graphics-function': {
+        start: 300,
+        end: 380,
+        type: 'func'
+      }
+    };
+
 
 

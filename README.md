@@ -65,7 +65,7 @@ You can wrap the function with Spyder to capture its performance like this:
 
     var foo = Spyder.func(function() {
       // expensive stuff goes here
-    };
+    });
     
 #### Images
 

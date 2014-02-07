@@ -1,4 +1,4 @@
-var Fastly = {};
+var Spyder = {};
 
 (function() {
   var PAGE_START_TIME = new Date().getTime();
@@ -7,13 +7,14 @@ var Fastly = {};
     return new Date().getTime() - PAGE_START_TIME;
   }
 
-  Fastly = {
+  Spyder = {
     data: {},
     func: function(id, func) {
-      Fastly.start(id, 'func');
+      var that = this;
+      this.start(id, 'func');
       return function() {
         func.apply(this, arguments);  
-        Fastly.stop(id);
+        that.stop(id);
       };
     },
     start: function(id, type) {
@@ -60,14 +61,14 @@ var Fastly = {};
 
   // automatic timings
   contentLoaded(window, function() {
-    Fastly.tag('dom-ready');
+    Spyder.tag('dom-ready');
   });
 
   ready(function() {
-    Fastly.tag('page-load');
+    Spyder.tag('page-load');
 
-    if (Fastly.chart) {
-      Fastly.chart();
+    if (Spyder.chart) {
+      Spyder.chart();
     }
   });
 

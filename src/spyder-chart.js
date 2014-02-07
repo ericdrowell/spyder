@@ -1,8 +1,8 @@
 (function() {
-  var container = document.getElementById('fastly-chart');
+  var container = document.getElementById('spyder-chart');
 
   function addBar(key) {
-    var obj = Fastly.data[key],
+    var obj = Spyder.data[key],
         bar = document.createElement('div'),
         start = obj.start,
         stop = obj.stop,
@@ -17,7 +17,7 @@
   }
 
   function addTag(key) {
-    var obj = Fastly.data[key],
+    var obj = Spyder.data[key],
         bar = document.createElement('div'),
         start = obj.start,
         type = obj.type || '';
@@ -28,7 +28,7 @@
     container.appendChild(bar);
   }
 
-  Fastly.chart = function() {
+  Spyder.chart = function() {
     var data = this.data,
         obj, key;
 

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="../src/fastly.js"></script>
+    <script src="../src/spyder.js"></script>
   </head>
   <body>
 
     <script>
 
-    var Person = Fastly.func('person-constructor', function() {
+    var Person = Spyder.func('person-constructor', function() {
       var i = 0, n;
       while(i<99999) {
         n = Math.pow(i, 2);
@@ -21,6 +21,6 @@
 
     </script>
 
-    <script>console.log(Fastly.data);</script>
+    <script>console.log(Spyder.data);</script>
   </body>
 </html>

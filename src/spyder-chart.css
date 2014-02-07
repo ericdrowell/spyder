@@ -1,24 +1,24 @@
-#fastly-chart {
+#spyder-chart {
   position: relative; 
   background-color: #ffecc9;
 }
 
-#fastly-chart .bar {
+#spyder-chart .bar {
   height: 10px;
   background-color: #87683c;
   margin-top: 2px;
 }
 
-#fastly-chart .bar.func {
+#spyder-chart .bar.func {
   background-color: #3d515a;
 }
 
-#fastly-chart .bar.image {
+#spyder-chart .bar.image {
   background-color: #af1314;
 }
 
 
-#fastly-chart .tag {
+#spyder-chart .tag {
   background-color: #fc9a2b;
   width: 5px;
   height: 100%;

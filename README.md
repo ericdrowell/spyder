@@ -10,6 +10,8 @@ Spyder is a front end performance framework that makes webpage performance analy
 * HTML rendering performance
 * tagged points in time, such as the moment that your webpage is fully visible above the fold
 * JS execution performance
+* iframe load times
+* ad performance
 * and more
 
 Once you're setup, you can use the Spyder chart plugin to visualize the performance data right in your browser, or you can serialize the data and send it off to a server for analysis and aggregation.

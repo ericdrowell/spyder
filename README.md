@@ -106,6 +106,14 @@ To render a water fall chart right in the browser, you can create a spyder-chart
     <div id="spyder-chart"></div>
     
     <script src="spyder-chart.js"></script>
+    
+#### Serialization
+
+To serialize the data into a string, you can do this for modern browsers:
+
+    var json = JSON.stringify(Spyder.data);
+    
+If you're targeting IE7 or older, you'll need to use a JSON polyfill such as http://bestiejs.github.io/json3/
 
     
 

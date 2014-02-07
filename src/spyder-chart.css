@@ -1,27 +1,34 @@
-#spyder-chart {
+#spyder-chart .wrapper {
   position: relative; 
   background-color: #ffecc9;
+  min-height: 100px;
+  overflow-x: scroll;
 }
 
-#spyder-chart .bar {
+#spyder-chart .wrapper .bar {
   height: 10px;
   background-color: #87683c;
   margin-top: 2px;
 }
 
-#spyder-chart .bar.func {
+#spyder-chart .wrapper .bar.func {
   background-color: #3d515a;
 }
 
-#spyder-chart .bar.image {
+#spyder-chart .wrapper .bar.image {
   background-color: #af1314;
 }
 
-
-#spyder-chart .tag {
+#spyder-chart .wrapper .tag {
+  /* orange */
   background-color: #fc9a2b;
   width: 5px;
   height: 100%;
   position: absolute;
   top: 0;
+}
+
+#spyder-chart .wrapper .tag.page {
+  /* light red */
+  background-color: #de171a; 
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../src/fastly.js"></script>
+  </head>
+  <body>
+
+    <script>
+
+    var Person = Fastly.func('person-constructor', function() {
+      var i = 0, n;
+      while(i<99999) {
+        n = Math.pow(i, 2);
+        i ++;
+      }
+
+      console.log('done');
+    });
+
+    var person = new Person();
+
+    </script>
+
+    <script>console.log(Fastly.data);</script>
+  </body>
+</html>

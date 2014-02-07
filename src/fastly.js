@@ -1,24 +1,128 @@
-var Fastly;
+var Fastly = {};
 
 (function() {
-	Fastly = function(id, func) {
-		Fastly.start(id);
-		return function() {
-			func.apply(this, arguments);	
-			Fastly.stop(id);
-		};
-	};
+  var PAGE_START_TIME = new Date().getTime();
 
-	Fastly.data = data = {};
+  function time() {
+    return new Date().getTime() - PAGE_START_TIME;
+  }
 
-	Fastly.start = function(id) {
-		data[id] = {};
-		data[id].start = new Date().getTime();
-	};
+  Fastly = {
+    data: {
+      'dom-ready': {
+        start: 0
+      },
+      'page-load': {
+        start: 0
+      }
+    },
+    func: function(id, func) {
+      Fastly.start(id);
+      return function() {
+        func.apply(this, arguments);  
+        Fastly.stop(id);
+      };
+    },
+    start: function(id) {
+      var data = this.data;
 
-	Fastly.stop = function(id) {
-		data[id].stop = new Date().getTime();
-	};
+      if (!data[id]) {
+        data[id] = {};
+        data[id].start = time();
+      }
+    },
+
+    stop: function(id) {
+      this.data[id].stop = time();
+    },
+
+    image: function(url) {
+      var that = this,
+          img = new Image();
+
+      that.start(url);
+
+      img.onload = function() {
+        that.stop(url);
+      };
+      img.src = url; 
+    }
+  };
+
+  // automatic timings
+  contentLoaded(window, function() {
+    Fastly.stop('dom-ready');
+  });
+
+  ready(function() {
+    Fastly.stop('page-load');
+  });
 
 
 })();
+
+/*============================ LIB ============================*/
+
+// jquery ready function for page load
+function ready(fn) {
+  if (document.readyState == "complete")
+      return fn();
+
+  if (window.addEventListener)
+      window.addEventListener("load", fn, false);
+  else if (window.attachEvent)
+      window.attachEvent("onload", fn);
+  else
+      window.onload = fn;
+}
+
+/*!
+ * contentloaded.js
+ *
+ * Author: Diego Perini (diego.perini at gmail.com)
+ * Summary: cross-browser wrapper for DOMContentLoaded
+ * Updated: 20101020
+ * License: MIT
+ * Version: 1.2
+ *
+ * URL:
+ * http://javascript.nwbox.com/ContentLoaded/
+ * http://javascript.nwbox.com/ContentLoaded/MIT-LICENSE
+ *
+ */
+
+// @win window reference
+// @fn function reference
+function contentLoaded(win, fn) {
+
+  var done = false, top = true,
+
+  doc = win.document, root = doc.documentElement,
+
+  add = doc.addEventListener ? 'addEventListener' : 'attachEvent',
+  rem = doc.addEventListener ? 'removeEventListener' : 'detachEvent',
+  pre = doc.addEventListener ? '' : 'on',
+
+  init = function(e) {
+    if (e.type == 'readystatechange' && doc.readyState != 'complete') return;
+    (e.type == 'load' ? win : doc)[rem](pre + e.type, init, false);
+    if (!done && (done = true)) fn.call(win, e.type || e);
+  },
+
+  poll = function() {
+    try { root.doScroll('left'); } catch(e) { setTimeout(poll, 50); return; }
+    init('poll');
+  };
+
+  if (doc.readyState == 'complete') fn.call(win, 'lazy');
+  else {
+    if (doc.createEventObject && root.doScroll) {
+      try { top = !win.frameElement; } catch(e) { }
+      if (top) poll();
+    }
+    doc[add](pre + 'DOMContentLoaded', init, false);
+    doc[add](pre + 'readystatechange', init, false);
+    win[add](pre + 'load', init, false);
+  }
+
+}

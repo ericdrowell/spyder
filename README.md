@@ -16,7 +16,7 @@ Once you're setup, you can use the Spyder chart plugin to visualize the performa
 
 ### Examples
 
-#### Accessing Spyder data
+#### Accessing Spyder Data
 
     var data = Spyder.data;
   
@@ -47,5 +47,51 @@ and the data structure looks like this:
       }
     };
 
+#### Simple Timer
 
+    Spyder.start('expensive-operation');
+    // expensive JavaScript goes here
+    Spyder.stop('expensive-operation');
+
+#### Functions
+
+let's say you have a function like this:
+
+    var foo = function() {
+      // expensive stuff goes here
+    };
+    
+You can wrap the function with Spyder to capture its performance like this:
+
+    var foo = Spyder.func(function() {
+      // expensive stuff goes here
+    };
+    
+#### Images
+
+To measure the loading time of an individual image in your HTML, you can do this:
+
+    <img src="some-image.jpg"/>
+    <script>Spyder.image('some-image.jpg');</script>
+    
+#### HTML rendering performance
+
+To measure the time it takes for the browser to churn through a lot of HTML, you can do this:
+
+    <script>Spyder.start('page-feed');</script>
+    <!-- tons and tons of HTML go here -->
+    <script>Spyder.stop('page-feed');</script>
+    
+#### Waterfall Chart
+
+To render a water fall chart right in the browser, you can create a spyder-chart container, and include spyder-chart.js at the bottom of your page.  You can use the default styling found in spyder-chart.css, or you can create your own.
+
+    <link rel="stylesheet" type="text/css" href="spyder-chart.css"></link>
+    <script src="spyder.js"></script>
+    
+    <div id="spyder-chart"></div>
+    
+    <script src="spyder-chart.js"></script>
+
+    
 

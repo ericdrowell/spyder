@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../src/fastly-chart.css"></link>
+    <script src="../src/fastly.js"></script>
+
+    <script>Fastly.start('http://code.jquery.com/jquery-1.10.1.min.js');</script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>Fastly.stop('http://code.jquery.com/jquery-1.10.1.min.js');</script>
+
+  </head>
+  <body>
+
+
+    <img src="http://tobiasmastgrave.files.wordpress.com/2012/02/star_wars-11308.png" />
+    <script>Fastly.image('http://tobiasmastgrave.files.wordpress.com/2012/02/star_wars-11308.png');</script>
+
+    <img src="http://webtaj.com/images/sports-ncaa-march-madness-pics_182200.jpg"/>
+    <script>Fastly.image('http://webtaj.com/images/sports-ncaa-march-madness-pics_182200.jpg');</script>
+
+
+    <script>Fastly.tag('page-visible-without-images');</script>
+
+    <img src="http://2.bp.blogspot.com/-z2_XigD9I0U/UNpe57TlDjI/AAAAAAAAAo0/OoVEkLJGUfI/s1600/The-Hobbit-1024x1024.jpg"/>
+    <script>Fastly.image('http://2.bp.blogspot.com/-z2_XigD9I0U/UNpe57TlDjI/AAAAAAAAAo0/OoVEkLJGUfI/s1600/The-Hobbit-1024x1024.jpg');</script>
+
+
+
+    <script>
+
+    var Person = Fastly.func('person-constructor', function() {
+      var i = 0, n;
+      while(i<99999) {
+        n = Math.pow(i, 2);
+        i ++;
+      }
+
+      console.log('done');
+    });
+
+    var person = new Person();
+
+    </script>
+
+    <div id="fastly-chart"></div>
+
+    <script src="../src/fastly-chart.js"></script>
+  </body>
+</html>
+
+<script>console.log(Fastly.data);</script>

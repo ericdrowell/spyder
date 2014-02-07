@@ -8,39 +8,48 @@ var Fastly = {};
   }
 
   Fastly = {
-    data: {
-      'dom-ready': {
-        start: 0
-      },
-      'page-load': {
-        start: 0
-      }
-    },
+    data: {},
     func: function(id, func) {
-      Fastly.start(id);
+      Fastly.start(id, 'func');
       return function() {
         func.apply(this, arguments);  
         Fastly.stop(id);
       };
     },
-    start: function(id) {
+    start: function(id, type) {
       var data = this.data;
 
       if (!data[id]) {
-        data[id] = {};
-        data[id].start = time();
+        data[id] = {
+          start: time()
+        };
+
+        if (type) {
+          data[id].type = type;
+        }
       }
     },
 
-    stop: function(id) {
+    stop: function(id, type) {
       this.data[id].stop = time();
+    },
+
+    tag: function(id) {
+      var data = this.data;
+
+      if (!data[id]) {
+        data[id] = {
+          start: time(),
+          type: 'tag'
+        };
+      }
     },
 
     image: function(url) {
       var that = this,
           img = new Image();
 
-      that.start(url);
+      this.start(url, 'image');
 
       img.onload = function() {
         that.stop(url);
@@ -51,11 +60,15 @@ var Fastly = {};
 
   // automatic timings
   contentLoaded(window, function() {
-    Fastly.stop('dom-ready');
+    Fastly.tag('dom-ready');
   });
 
   ready(function() {
-    Fastly.stop('page-load');
+    Fastly.tag('page-load');
+
+    if (Fastly.chart) {
+      Fastly.chart();
+    }
   });
 
 

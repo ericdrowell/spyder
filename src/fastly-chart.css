@@ -1,0 +1,27 @@
+#fastly-chart {
+  position: relative; 
+  background-color: #ffecc9;
+}
+
+#fastly-chart .bar {
+  height: 10px;
+  background-color: #87683c;
+  margin-top: 2px;
+}
+
+#fastly-chart .bar.func {
+  background-color: #3d515a;
+}
+
+#fastly-chart .bar.image {
+  background-color: #af1314;
+}
+
+
+#fastly-chart .tag {
+  background-color: #fc9a2b;
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}

@@ -91,10 +91,10 @@ To tag a specific point in time, you can do this:
     
 To tag when a specific HTML element is rendered, you can do something like this:
 
-   <div id="foo"></div>
+    <div id="foo"></div>
    
-   <div id="bar"></div>
-   <script>Spyder.tag('bar-is-visible');</script>
+    <div id="bar"></div>
+    <script>Spyder.tag('bar-is-visible');</script>
     
 #### Waterfall Chart
 

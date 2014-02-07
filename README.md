@@ -82,6 +82,20 @@ To measure the time it takes for the browser to churn through a lot of HTML, you
     <!-- tons and tons of HTML go here -->
     <script>Spyder.stop('page-feed');</script>
     
+    
+#### Tagging
+
+To tag a specific point in time, you can do this:
+
+    Spyder.tag('special-moment');
+    
+To tag when a specific HTML element is rendered, you can do something like this:
+
+   <div id="foo"></div>
+   
+   <div id="bar"></div>
+   <script>Spyder.tag('bar-is-visible');</script>
+    
 #### Waterfall Chart
 
 To render a water fall chart right in the browser, you can create a spyder-chart container, and include spyder-chart.js at the bottom of your page.  You can use the default styling found in spyder-chart.css, or you can create your own.

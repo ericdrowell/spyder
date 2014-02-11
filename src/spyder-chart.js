@@ -45,7 +45,7 @@
 
     for (key in data) {
       obj = data[key];
-      if (obj.type === 'tag') {
+      if (!obj.stop) {
         addTag(key);
       }
       else {

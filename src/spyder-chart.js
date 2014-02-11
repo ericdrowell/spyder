@@ -1,56 +1,97 @@
 (function() {
-  var container, wrapper;
+  Spyder.chart = {
+    init: function() {
+      var data = Spyder.data,
+          obj, key;
 
-  function addBar(key) {
-    var obj = Spyder.data[key],
-        bar = document.createElement('div'),
-        start = obj.start,
-        stop = obj.stop,
-        diff = stop - start,
-        type = obj.type || '';
+      this.dataArr = [];
+          
+      this.container = document.getElementById('spyder-chart');
+      this.wrapper = document.createElement('div');
+      this.wrapper.className = 'wrapper';
+      this.container.appendChild(this.wrapper);
 
-    bar.className = type + ' bar';
-    bar.style.marginLeft = obj.start + 'px';
-    bar.style.width = diff + 'px';
-    bar.setAttribute('data-id', key);
-    bar.setAttribute('data-start', start);
-    bar.setAttribute('data-stop', stop);
-    bar.setAttribute('data-type', type);
-    bar.setAttribute('data-diff', diff);
-    wrapper.appendChild(bar);
-  }
-
-  function addTag(key) {
-    var obj = Spyder.data[key],
-        bar = document.createElement('div'),
-        start = obj.start,
-        className = key === 'dom-ready' || key === 'page-load' ? 'tag page' : 'tag';
-
-    bar.className = className;
-    bar.style.marginLeft = obj.start + 'px';
-    bar.setAttribute('data-id', key);
-    bar.setAttribute('data-start', start);
-    bar.setAttribute('data-type', 'tag');
-    wrapper.appendChild(bar);
-  }
-
-  Spyder.chart = function() {
-    var data = this.data,
-        obj, key;
-        
-    container = document.getElementById('spyder-chart');
-    wrapper = document.createElement('div');
-    wrapper.className = 'wrapper';
-    container.appendChild(wrapper);
-
-    for (key in data) {
-      obj = data[key];
-      if (!obj.stop) {
-        addTag(key);
+      // create array of data points
+      for (key in data) {
+        obj = data[key];
+        obj.id = key;
+        this.dataArr.push(obj);
       }
-      else {
-        addBar(key);
+
+      // put data points in order by start times
+      this.dataArr.sort(function(a,b) {
+        if (a.start < b.start)
+           return -1;
+        if (a.start > b.start)
+          return 1;
+        return 0;
+      });
+
+      this.minStart = this.dataArr[0].start;
+      this.drawChart();
+      this.bind();
+    },
+    bind: function() {
+      $(this.wrapper).on('mouseover', function(evt) {
+        var $target = $(evt.target), 
+            str = '';
+
+        if ($target.hasClass('range')) {
+          str = 'RANGE: ' + $target.data('id') + ': ' + $target.data('diff') + 'ms';
+          console.log(str);
+        }
+        if ($target.hasClass('tag')) {
+          str = 'TAG: ' + $target.data('id') + ': @' + $target.data('start') + 'ms';
+          console.log(str);
+        }
+      });
+    },
+    drawChart: function() {
+      var dataArr = this.dataArr,
+          len = dataArr.length,
+          n, obj;
+
+      for (n=0; n<len; n++) {
+        obj = dataArr[n];
+        if (obj.stop) {
+          this.addRange(obj);
+        }
+        else {
+          this.addTag(obj);
+        }
+
       }
+    },
+    addTag: function(obj) {
+      var bar = document.createElement('div'),
+          id = obj.id,
+          start = obj.start,
+          type = obj.type;
+
+      bar.className = 'tag';
+      bar.style.marginLeft = parseInt(start - this.minStart) + 'px';
+      bar.setAttribute('data-id', id);
+      bar.setAttribute('data-start', start);
+      bar.setAttribute('data-type', type);
+      this.wrapper.appendChild(bar);
+    },
+    addRange: function(obj) {
+      var bar = document.createElement('div'),
+          id = obj.id,
+          start = obj.start,
+          stop = obj.stop,
+          diff = stop - start,
+          type = obj.type || '';
+
+      bar.className = type + ' range';
+      bar.style.marginLeft = parseInt(start - this.minStart) + 'px';
+      bar.style.width = diff + 'px';
+      bar.setAttribute('data-id', id);
+      bar.setAttribute('data-start', start);
+      bar.setAttribute('data-stop', stop);
+      bar.setAttribute('data-type', type);
+      bar.setAttribute('data-diff', diff);
+      this.wrapper.appendChild(bar);
     }
   };
 })();

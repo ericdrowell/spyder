@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="../src/spyder-chart.css"></link>
+    <script>var SPYDER_PAGE_START_TIME = new Date().getTime();</script>
     <script src="../src/spyder-head.js"></script>
+    <script>Spyder.range('spyder-head-js-load', SPYDER_PAGE_START_TIME);</script>
 
-    <script>Spyder.start('http://code.jquery.com/jquery-1.10.1.min.js');</script>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script>Spyder.stop('http://code.jquery.com/jquery-1.10.1.min.js');</script>
-
+    <script>Spyder.start('load-spyder-chart-css');</script>
+    <link rel="stylesheet" type="text/css" href="../src/spyder-chart.css"></link>
+    <script>Spyder.stop('load-spyder-chart-css');</script>
   </head>
   <body>
 
 
     <img src="http://tobiasmastgrave.files.wordpress.com/2012/02/star_wars-11308.png" />
-    <script>Spyder.image('http://tobiasmastgrave.files.wordpress.com/2012/02/star_wars-11308.png');</script>
+    <script>Spyder.image('star-wars-image', 'http://tobiasmastgrave.files.wordpress.com/2012/02/star_wars-11308.png');</script>
 
     <img src="http://webtaj.com/images/sports-ncaa-march-madness-pics_182200.jpg"/>
-    <script>Spyder.image('http://webtaj.com/images/sports-ncaa-march-madness-pics_182200.jpg');</script>
+    <script>Spyder.image('ncaa-image', 'http://webtaj.com/images/sports-ncaa-march-madness-pics_182200.jpg');</script>
 
 
-    <script>Spyder.tag('page-visible-without-images');</script>
+    <script>Spyder.tag('above-the-fold-visible');</script>
 
     <img src="http://2.bp.blogspot.com/-z2_XigD9I0U/UNpe57TlDjI/AAAAAAAAAo0/OoVEkLJGUfI/s1600/The-Hobbit-1024x1024.jpg"/>
-    <script>Spyder.image('http://2.bp.blogspot.com/-z2_XigD9I0U/UNpe57TlDjI/AAAAAAAAAo0/OoVEkLJGUfI/s1600/The-Hobbit-1024x1024.jpg');</script>
+    <script>Spyder.image('hobbit-image', 'http://2.bp.blogspot.com/-z2_XigD9I0U/UNpe57TlDjI/AAAAAAAAAo0/OoVEkLJGUfI/s1600/The-Hobbit-1024x1024.jpg');</script>
 
 
 
@@ -44,9 +44,14 @@
 
     <div id="spyder-chart"></div>
 
-
+    <script>Spyder.start('fetch-execute-spyder-chart');</script>
     <script src="../src/spyder-chart.js"></script>
+    <script>Spyder.stop('fetch-execute-spyder-chart');</script>
+
+    <script>Spyder.start('fetch-execute-jquery');</script>
     <script src="../lib/jquery-1.11.0.min.js"></script>
+    <script>Spyder.stop('fetch-execute-jquery');</script>
+
     <script src="../src/spyder-foot.js"></script>
   </body>
 </html>

@@ -5,17 +5,17 @@
   overflow-x: scroll;
 }
 
-#spyder-chart .wrapper .bar {
+#spyder-chart .wrapper .range {
   height: 10px;
   background-color: #87683c;
   margin-top: 2px;
 }
 
-#spyder-chart .wrapper .bar.func {
+#spyder-chart .wrapper .range.func {
   background-color: #3d515a;
 }
 
-#spyder-chart .wrapper .bar.image {
+#spyder-chart .wrapper .range.image {
   background-color: #af1314;
 }
 

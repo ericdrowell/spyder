@@ -32,9 +32,10 @@ $(window).load(function() {
   Spyder.addPerfTimingRange('domain-lookup', 'domainLookupStart', 'domainLookupEnd');
   Spyder.addPerfTimingRange('connect', 'connectStart', 'connectEnd');
   Spyder.addPerfTimingRange('secure-connection', 'connectEnd', 'secureConnectionStart');
-  Spyder.addPerfTimingRange('request', 'requestStart', 'responseEnd');
+  Spyder.addPerfTimingRange('server-response', 'requestStart', 'responseEnd');
+  Spyder.addPerfTimingRange('dom-loaded', 'responseEnd', 'domLoading');
 
-  Spyder.tag('page-start', Spyder.PAGE_START_TIME);
+  Spyder.tag('page-start', SPYDER_PAGE_START_TIME);
   Spyder.tag('page-load');
 
   // output data to console
@@ -42,6 +43,6 @@ $(window).load(function() {
 
   // output data to chart
   if (Spyder.chart) {
-    Spyder.chart();
+    Spyder.chart.init();
   }
 });

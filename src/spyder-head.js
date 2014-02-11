@@ -5,12 +5,10 @@ var Spyder = {};
     if (t === undefined) {
       t = new Date().getTime();
     }
-    return t - Spyder.PAGE_START_TIME;
+    return t - SPYDER_PAGE_START_TIME;
   }
 
   Spyder = {
-    PAGE_START_TIME: new Date().getTime(),
-
     data: {},
     start: function(id, type) {
       var data = this.data;
@@ -46,8 +44,9 @@ var Spyder = {};
       var that = this;
       this.start(id, 'func');
       return function() {
-        func.apply(this, arguments);  
+        var ret = func.apply(this, arguments);  
         that.stop(id);
+        return ret;
       };
     },
     tag: function(id, t) {
@@ -60,14 +59,14 @@ var Spyder = {};
       }
     },
 
-    image: function(url) {
+    image: function(id, url) {
       var that = this,
           img = new Image();
 
-      this.start(url, 'image');
+      this.start(id, 'image');
 
       img.onload = function() {
-        that.stop(url);
+        that.stop(id);
       };
       img.src = url; 
     }

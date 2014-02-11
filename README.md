@@ -7,8 +7,8 @@ Spyder is a front end performance framework that makes webpage performance analy
 * redirect timings
 * domain lookup time
 * server connection time
-* secure connection overhead time
-* request time
+* secure connection time
+* server response time
 * page start time
 * dom ready time
 * page load time

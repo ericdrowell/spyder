@@ -3,11 +3,26 @@ Spyder
 
 Spyder is a front end performance framework that makes webpage performance analysis a piece of cake.  Spyder allows you to capture:
 
+
+  Spyder.addPerfTimingTag  ('navigation-start', 'navigationStart');
+  Spyder.addPerfTimingRange('redirect', 'redirectStart', 'redirectEnd');
+  Spyder.addPerfTimingRange('domain-lookup', 'domainLookupStart', 'domainLookupEnd');
+  Spyder.addPerfTimingRange('connect', 'connectStart', 'connectEnd');
+  Spyder.addPerfTimingRange('secure-connection', 'connectEnd', 'secureConnectionStart');
+  Spyder.addPerfTimingRange('request', 'requestStart', 'responseEnd');
+  
+* navigation start time
+* redirect timings
+* domain lookup time
+* server connection time
+* secure connection overhead time
+* request time
+* page start time
 * dom ready time
 * page load time
 * static asset loading latencies
 * individual image loading times
-* HTML rendering performance
+* HTML rendering times
 * tagged points in time, such as the moment that your webpage is fully visible above the fold
 * JS execution performance
 * iframe load times

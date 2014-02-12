@@ -9,34 +9,37 @@ var Spyder = {};
   }
 
   Spyder = {
-    data: {},
+    data: {
+      timings: {},
+      dom: {}
+    },
     start: function(id, type) {
-      var data = this.data;
+      var timings = this.data.timings;
 
-      if (!data[id]) {
-        data[id] = {
+      if (!timings[id]) {
+        timings[id] = {
           start: time()
         };
 
         if (type) {
-          data[id].type = type;
+          timings[id].type = type;
         }
       }
     },
     stop: function(id, type) {
-      this.data[id].stop = time();
+      this.data.timings[id].stop = time();
     },
     range: function(id, start, stop, type) {
-      var data = this.data;
+      var timings = this.data.timings;
 
-      if (!data[id]) {
-        data[id] = {
+      if (!timings[id]) {
+        timings[id] = {
           start: time(start),
           stop: time(stop)
         };
 
         if (type) {
-          data[id].type = type;
+          timings[id].type = type;
         }
       }
     },
@@ -50,10 +53,10 @@ var Spyder = {};
       };
     },
     tag: function(id, t) {
-      var data = this.data;
+      var timings = this.data.timings;
 
-      if (!data[id]) {
-        data[id] = {
+      if (!timings[id]) {
+        timings[id] = {
           start: time(t)
         };
       }

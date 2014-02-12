@@ -1,10 +1,10 @@
 (function() {
   Spyder.chart = {
     init: function() {
-      var data = Spyder.data,
+      var timings = Spyder.data.timings,
           obj, key;
 
-      this.dataArr = [];
+      this.timingsArr = [];
           
       this.container = document.getElementById('spyder-chart');
       this.wrapper = document.createElement('div');
@@ -12,14 +12,14 @@
       this.container.appendChild(this.wrapper);
 
       // create array of data points
-      for (key in data) {
-        obj = data[key];
+      for (key in timings) {
+        obj = timings[key];
         obj.id = key;
-        this.dataArr.push(obj);
+        this.timingsArr.push(obj);
       }
 
       // put data points in order by start times
-      this.dataArr.sort(function(a,b) {
+      this.timingsArr.sort(function(a,b) {
         if (a.start < b.start)
            return -1;
         if (a.start > b.start)
@@ -27,7 +27,7 @@
         return 0;
       });
 
-      this.minStart = this.dataArr[0].start;
+      this.minStart = this.timingsArr[0].start;
       this.drawChart();
       this.bind();
     },
@@ -49,8 +49,8 @@
       });
     },
     drawChart: function() {
-      var dataArr = this.dataArr,
-          len = dataArr.length,
+      var timingsArr = this.timingsArr,
+          len = timingsArr.length,
           n, obj;
 
       // draw backend region
@@ -58,7 +58,7 @@
 
       // draw ranges and tags
       for (n=0; n<len; n++) {
-        obj = dataArr[n];
+        obj = timingsArr[n];
         if (obj.stop) {
           this.addRange(obj);
         }

@@ -113,11 +113,6 @@ and the data structure looks like this:
         start: 5,
         end: 180,
         type: 'js'
-      },
-      'graphics-function': {
-        start: 300,
-        end: 380,
-        type: 'func'
       }
     };
 
@@ -146,7 +141,17 @@ You can wrap the function with Spyder to capture its performance like this:
 To measure the loading time of an individual image in your HTML, you can do this:
 
     <img src="some-image.jpg"/>
-    <script>Spyder.image('some-image.jpg');</script>
+    <script>Spyder.image('some-image', 'some-image.jpg');</script>
+    
+#### Range types
+
+to identify a range, you can pass a type variable, which can be "css" or "js".  That looks something like this:
+
+    <script>Spyder.start('load-execute-jquery', 'js');</script>
+    <script src="../lib/jquery-1.11.0.min.js"></script>
+    <script>Spyder.stop('load-execute-jquery');</script>
+    
+If you use the Spyder chart plugin, this is required in order to color code the ranges based on type.
     
 #### HTML rendering performance
 
@@ -175,11 +180,12 @@ To tag when a specific HTML element is rendered, you can do something like this:
 To render a water fall chart right in the browser, you can create a spyder-chart container, and include spyder-chart.js at the bottom of your page.  You can use the default styling found in spyder-chart.css, or you can create your own.
 
     <link rel="stylesheet" type="text/css" href="spyder-chart.css"></link>
-    <script src="spyder.js"></script>
+    <script src="spyder-head.js"></script>
     
     <div id="spyder-chart"></div>
     
     <script src="spyder-chart.js"></script>
+    <script src="spyder-foot.js"></script>
     
 #### Serialization
 

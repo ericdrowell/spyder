@@ -6,17 +6,31 @@
 }
 
 #spyder-chart .wrapper .range {
+  position: relative; 
   height: 10px;
   background-color: #87683c;
   margin-top: 2px;
+  z-index: 99999;
 }
 
 #spyder-chart .wrapper .range.func {
-  background-color: #3d515a;
+  /* gray blue */
+  background-color: #43555f;
 }
 
 #spyder-chart .wrapper .range.image {
+  /* red */
   background-color: #af1314;
+}
+
+#spyder-chart .wrapper .range.css {
+  /* blackish purple */
+  background-color: #060007;
+}
+
+#spyder-chart .wrapper .range.js {
+  /* gray blue */
+  background-color: #43555f;
 }
 
 #spyder-chart .wrapper .tag {
@@ -31,4 +45,11 @@
 #spyder-chart .wrapper .tag.page {
   /* light red */
   background-color: #de171a; 
+}
+
+#spyder-chart .wrapper .backend {
+  position: absolute;
+  /* slightly darker than .wrapper background color */
+  background-color: #ffd37d;
+  height: 100%;
 }

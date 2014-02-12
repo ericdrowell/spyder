@@ -33,7 +33,7 @@ $(window).load(function() {
   Spyder.addPerfTimingRange('connect', 'connectStart', 'connectEnd');
   Spyder.addPerfTimingRange('secure-connection', 'connectEnd', 'secureConnectionStart');
   Spyder.addPerfTimingRange('server-response', 'requestStart', 'responseEnd');
-  Spyder.addPerfTimingRange('dom-loaded', 'responseEnd', 'domLoading');
+  //Spyder.addPerfTimingRange('dom-loaded', 'responseEnd', 'domLoading');
 
   Spyder.tag('page-start', SPYDER_PAGE_START_TIME);
   Spyder.tag('page-load');

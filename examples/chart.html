@@ -3,9 +3,9 @@
   <head>
     <script>var SPYDER_PAGE_START_TIME = new Date().getTime();</script>
     <script src="../src/spyder-head.js"></script>
-    <script>Spyder.range('spyder-head-js-load', SPYDER_PAGE_START_TIME);</script>
+    <script>Spyder.range('load-execute-spyder-head', SPYDER_PAGE_START_TIME, 0, 'js');</script>
 
-    <script>Spyder.start('load-spyder-chart-css');</script>
+    <script>Spyder.start('load-spyder-chart-css', 'css');</script>
     <link rel="stylesheet" type="text/css" href="../src/spyder-chart.css"></link>
     <script>Spyder.stop('load-spyder-chart-css');</script>
   </head>
@@ -44,15 +44,17 @@
 
     <div id="spyder-chart"></div>
 
-    <script>Spyder.start('fetch-execute-spyder-chart');</script>
-    <script src="../src/spyder-chart.js"></script>
-    <script>Spyder.stop('fetch-execute-spyder-chart');</script>
-
-    <script>Spyder.start('fetch-execute-jquery');</script>
+    <script>Spyder.start('load-execute-jquery', 'js');</script>
     <script src="../lib/jquery-1.11.0.min.js"></script>
-    <script>Spyder.stop('fetch-execute-jquery');</script>
+    <script>Spyder.stop('load-execute-jquery');</script>
 
+    <script>Spyder.start('load-execute-spyder-chart', 'js');</script>
+    <script src="../src/spyder-chart.js"></script>
+    <script>Spyder.stop('load-execute-spyder-chart');</script>
+
+    <script>Spyder.start('load-execute-spyder-foot', 'js');</script>
     <script src="../src/spyder-foot.js"></script>
+    <script>Spyder.stop('load-execute-spyder-foot');</script>
   </body>
 </html>
 

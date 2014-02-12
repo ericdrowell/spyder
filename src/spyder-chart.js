@@ -38,10 +38,12 @@
 
         if ($target.hasClass('range')) {
           str = 'RANGE: ' + $target.data('id') + ': ' + $target.data('diff') + 'ms';
+          // TODO: use tooltip eventuall
           console.log(str);
         }
         if ($target.hasClass('tag')) {
           str = 'TAG: ' + $target.data('id') + ': @' + $target.data('start') + 'ms';
+          // TODO: use tooltip eventuall
           console.log(str);
         }
       });
@@ -51,6 +53,10 @@
           len = dataArr.length,
           n, obj;
 
+      // draw backend region
+      this.addBackendRegion();
+
+      // draw ranges and tags
       for (n=0; n<len; n++) {
         obj = dataArr[n];
         if (obj.stop) {
@@ -61,6 +67,14 @@
         }
 
       }
+    },
+    addBackendRegion: function() {
+      var backendWidth = this.minStart * -1,
+          backend = document.createElement('div');
+
+      backend.style.width = backendWidth + 'px';
+      backend.className='backend';
+      this.wrapper.appendChild(backend);
     },
     addTag: function(obj) {
       var bar = document.createElement('div'),

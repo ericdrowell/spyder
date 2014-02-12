@@ -2,7 +2,7 @@ var Spyder = {};
 
 (function() {
   function time(t) {
-    if (t === undefined) {
+    if (!t) {
       t = new Date().getTime();
     }
     return t - SPYDER_PAGE_START_TIME;

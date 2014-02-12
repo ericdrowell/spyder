@@ -94,27 +94,99 @@ Notice that there's a div with an id of "spyder-chart".  This is required.  The 
 
     var data = Spyder.data;
   
-and the data structure looks like this:
+Currently, Spyder data contains timings and dom information.  Here's a sample:
 
     {
-      'dom-ready': {
-        start: 300,
-        type: 'tag'
-      },
-      'page-load': {
-        start: 600,
-        type: 'tag'
-      },
-      'page-visible-above-fold': {
-        start: 210,
-        type: 'tag'
-      },
-      'jquery.min.js': {
-        start: 5,
-        end: 180,
-        type: 'js'
-      }
-    };
+        "timings": {
+            "load-execute-spyder-head": {
+                "start": 0,
+                "stop": 6,
+                "type": "js"
+            },
+            "load-spyder-chart-css": {
+                "start": 6,
+                "type": "css",
+                "stop": 8
+            },
+            "star-wars-image": {
+                "start": 9,
+                "type": "image",
+                "stop": 545
+            },
+            "ncaa-image": {
+                "start": 9,
+                "type": "image",
+                "stop": 886
+            },
+            "above-the-fold-visible": {
+                "start": 10
+            },
+            "hobbit-image": {
+                "start": 10,
+                "type": "image",
+                "stop": 63
+            },
+            "person-constructor": {
+                "start": 11,
+                "type": "func",
+                "stop": 16
+            },
+            "load-execute-jquery": {
+                "start": 17,
+                "type": "js",
+                "stop": 58
+            },
+            "load-execute-spyder-chart": {
+                "start": 59,
+                "type": "js",
+                "stop": 67
+            },
+            "load-execute-spyder-foot": {
+                "start": 68,
+                "type": "js",
+                "stop": 71
+            },
+            "dom-ready": {
+                "start": 72
+            },
+            "navigation-start": {
+                "start": -7
+            },
+            "domain-lookup": {
+                "start": -7,
+                "stop": -7
+            },
+            "connect": {
+                "start": -7,
+                "stop": -7
+            },
+            "server-response": {
+                "start": -7,
+                "stop": -6
+            },
+            "page-start": {
+                "start": 0
+            },
+            "page-load": {
+                "start": 888
+            }
+        },
+        "dom": {
+            "div": 1,
+            "span": 3,
+            "a": 1,
+            "p": 0,
+            "button": 0,
+            "img": 3,
+            "script": 19,
+            "link": 1,
+            "h1": 0,
+            "h2": 0,
+            "h3": 0,
+            "h4": 0,
+            "all": 31
+        }
+    }
 
 #### Simple Timer
 

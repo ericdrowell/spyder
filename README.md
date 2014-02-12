@@ -148,7 +148,7 @@ To measure the loading time of an individual image in your HTML, you can do this
 to identify a range, you can pass a type variable, which can be "css" or "js".  That looks something like this:
 
     <script>Spyder.start('load-execute-jquery', 'js');</script>
-    <script src="../lib/jquery-1.11.0.min.js"></script>
+    <script src="jquery-1.11.0.min.js"></script>
     <script>Spyder.stop('load-execute-jquery');</script>
     
 If you use the Spyder chart plugin, this is required in order to color code the ranges based on type.

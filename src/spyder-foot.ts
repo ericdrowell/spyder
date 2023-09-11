@@ -6,9 +6,9 @@ $(function() {
 
 $(window).load(function() {
   Spyder.addPerfTimingTag = function() {
-    var pt = performance && performance.timing,
-        key = arguments[0],
-        start = pt && pt[arguments[1]];
+    let pt = performance && performance.timing;
+    const key = arguments[0];
+    const start = pt && pt[arguments[1]];
 
     if (start) {
       Spyder.tag(key, start);
@@ -16,10 +16,10 @@ $(window).load(function() {
   };
 
   Spyder.addPerfTimingRange = function() {
-    var pt = performance && performance.timing,
-        key = arguments[0],
-        start = pt && pt[arguments[1]];
-        end = pt && pt[arguments[2]];
+    let pt = performance && performance.timing;
+    const key = arguments[0];
+    const start = pt && pt[arguments[1]];
+    const end = pt && pt[arguments[2]];
 
     if (start && end) {
       Spyder.range(key, start, end);
@@ -27,8 +27,8 @@ $(window).load(function() {
   };
 
   Spyder.addDomCounts = function(arr) {
-    var length = arr.length,
-        n=0, el;
+    const length = arr.length;
+    let n=0, el;
 
     for (n=0; n<arr.length; n++) {
       el = arr[n];

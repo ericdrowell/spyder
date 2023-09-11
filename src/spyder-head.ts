@@ -1,7 +1,7 @@
-var Spyder = {};
+let Spyder = {};
 
 (function() {
-  function time(t) {
+  function time(t?: number): number {
     if (!t) {
       t = new Date().getTime();
     }
@@ -13,8 +13,8 @@ var Spyder = {};
       timings: {},
       dom: {}
     },
-    start: function(id, type) {
-      var timings = this.data.timings;
+    start: function(id: string, type?: string): void {
+      const timings = this.data.timings;
 
       if (!timings[id]) {
         timings[id] = {
@@ -26,11 +26,11 @@ var Spyder = {};
         }
       }
     },
-    stop: function(id, type) {
+    stop: function(id: string, type?: string): void {
       this.data.timings[id].stop = time();
     },
-    range: function(id, start, stop, type) {
-      var timings = this.data.timings;
+    range: function(id: string, start: number, stop: number, type?: string): void {
+      const timings = this.data.timings;
 
       if (!timings[id]) {
         timings[id] = {
@@ -43,17 +43,17 @@ var Spyder = {};
         }
       }
     },
-    func: function(id, func) {
-      var that = this;
+    func: function(id: string, func: Function): Function {
+      const that = this;
       this.start(id, 'func');
       return function() {
-        var ret = func.apply(this, arguments);  
+        const ret = func.apply(this, arguments);  
         that.stop(id);
         return ret;
       };
     },
-    tag: function(id, t) {
-      var timings = this.data.timings;
+    tag: function(id: string, t: number): void {
+      const timings = this.data.timings;
 
       if (!timings[id]) {
         timings[id] = {
@@ -62,9 +62,9 @@ var Spyder = {};
       }
     },
 
-    image: function(id, url) {
-      var that = this,
-          img = new Image();
+    image: function(id: string, url: string): void {
+      const that = this;
+      const img = new Image();
 
       this.start(id, 'image');
 
